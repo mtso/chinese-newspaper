@@ -373,7 +373,7 @@ const setTsukkomiPageFor = function(associatedElement, url, callback) {
 }
 
 const initialTsukkomiUrlFor = function(id) {
-  return 'http://' + window.location.host + 
+  return 'https://' + window.location.host + 
     '/comments?tsukkomi_id=' + id + 
     '&_page=1';
 }

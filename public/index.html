@@ -11,7 +11,7 @@
       crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-      httpGetAsync('http://' + window.location.host + '/resetDate', function(res) {
+      httpGetAsync('https://' + window.location.host + '/resetDate', function(res) {
         document.getElementById('serverReset').innerHTML = res.responseText;
       });
     </script>
