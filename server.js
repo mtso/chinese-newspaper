@@ -9,8 +9,14 @@ const middlewares = JsonServer.defaults();
 const port = process.env.PORT || 3000
 
 server.use(middlewares);
-server.use(router);
 
+var resetDate;
+server.get('/resetDate', function (req, res) {
+  res.jsonp(resetDate);
+});
+
+server.use(router);
 server.listen(port, function () {
   console.log('Listening on port ' + port);
+  resetDate = (new Date);
 });
