@@ -14,16 +14,3 @@ server.use(router);
 server.listen(port, function () {
   console.log('Listening on port ' + port);
 });
-
-
-// const app = Express();
-// app.use(Express.static('client'));
-
-// app.get('/', function (req, res) {
-//   const indexPath = __dirname + '/client/index.html';
-//   res.sendFile(indexPath);
-// });
-
-// app.listen(port, function () {
-//   console.log('Listening on port ' + port);
-// });

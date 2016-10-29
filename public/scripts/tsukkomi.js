@@ -171,24 +171,94 @@ const saveTsukkomu = function(tsukkomu) {
 const viewButtonClick = function(event, id) {
   event.stopPropagation();
   var target = event.target;
+  var viewPanel = document.getElementById(id + '-view-panel');
 
   target.showTsukkomis = !target.showTsukkomis;
 
   if (target.showTsukkomis) {
     target.innerHTML = "Hide Tsukkomis";
-    var url = 
-      'http://' + window.location.host + 
-      '/comments?tsukkomi_id=' + id; // + '&_page=first';
-    
-    httpGetAsync(url, function(res) {
-      console.log(res.responseText);
+    viewPanel.nextButton.style.display = 'inline';
+    viewPanel.prevButton.style.display = 'inline';
 
-      var links = parseLinkHeader(res.getResponseHeader('Link'));
-
-      console.log(links['next']);
-    });
+    loadTsukkomiDivFor(id);
   } else {
     target.innerHTML = "Show Tsukkomis";
+    viewPanel.nextButton.style.display = 'none';
+    viewPanel.prevButton.style.display = 'none';
+  }
+}
+
+const initialTsukkomiUrlFor = function(id) {
+  return 'http://' + window.location.host + 
+    '/comments?tsukkomi_id=' + id + 
+    '&_page=1';
+}
+
+const setTsukkomiPageFor = function(associatedElement, url) {
+  var viewPanel = document.getElementById(associatedElement.id + '-view-panel');
+
+  httpGetAsync(url, function(res) {
+
+    var links = parseLinkHeader(res.getResponseHeader('Link'));
+
+    var currentTsukkomiData = JSON.parse(res.responseText);
+    console.log(currentTsukkomiData);
+
+    associatedElement.tsukkomisForCurrentPage = currentTsukkomiData;
+    associatedElement.nextPageUrl = links['next'] ? links['next'] : null;
+    associatedElement.prevPageUrl = links['prev'] ? links['prev'] : null;
+    associatedElement.currentPageUrl = url;
+
+    viewPanel.nextButton.disabled = links['next'] ? false : true;
+    viewPanel.prevButton.disabled = links['prev'] ? false : true;
+  });
+}
+
+const loadTsukkomiDivFor = function(id) {
+  var associatedElement = document.getElementById(id);
+  const containerId = id + '-tsukkomis';
+  
+  var container = document.getElementById(containerId);
+  if (!container) {
+
+    container = document.createElement('div');
+    container.setAttribute('id', containerId);
+
+    const containerStyle =
+      { position: 'absolute'
+      , display: 'block'
+      // , zIndex: 200
+      // , width: 100%
+      // , height: 100%
+      , top: '0'
+      }
+
+    for (var i in containerStyle) {
+      container.style[i] = containerStyle[i];
+    }
+    associatedElement.appendChild(container);
+  }
+  // console.log(associatedElement.tsukkomisForCurrentPage);
+  for (var tsukkomuData of associatedElement.tsukkomisForCurrentPage) {
+    const tsukkomiStyle =
+      { backgroundColor: '#fff'
+      , pointerEvents: 'none'
+      , left: tsukkomuData.xPosition + 'px'
+      , top: tsukkomuData.yPosition + 'px'
+      , position: 'absolute'
+      , display: 'inline-block'
+      , resize: 'none'
+      , padding: '0.3em 0.5em'
+      , fontSize: '0.7em'
+      }
+
+    var tsukkomu = document.createElement('div');
+    for (var i in tsukkomiStyle) {
+      tsukkomu.style[i] = tsukkomiStyle[i];
+    }
+
+    tsukkomu.innerHTML = tsukkomuData['body'];
+    container.appendChild(tsukkomu)
   }
 }
 
@@ -205,17 +275,22 @@ const addTsukkomiPanelTo = function(element) {
   viewButton.setAttribute('onclick', 'viewButtonClick(event, this.tsukkomiId)');
 
   var prevButton = document.createElement('button');
-  prevButton.innerHTML = "←";
+  prevButton.innerHTML = "<";
   prevButton.disabled = true;
-  // prevButton.style.display = 'none';
+  prevButton.style.display = 'none';
 
   var nextButton = document.createElement('button');
-  nextButton.innerHTML = "→";
+  nextButton.innerHTML = ">";
   nextButton.disabled = false;
+  nextButton.style.display = 'none';
 
   panel.appendChild(viewButton);
-  // panel.appendChild(prevButton);
-  // panel.appendChild(nextButton);
+  panel.appendChild(prevButton);
+  panel.appendChild(nextButton);
+
+  panel.viewButton = viewButton;
+  panel.prevButton = prevButton;
+  panel.nextButton = nextButton;
 
   const panelStyle =
     { position: 'absolute'
@@ -226,8 +301,10 @@ const addTsukkomiPanelTo = function(element) {
   for (var i in panelStyle) {
     panel.style[i] = panelStyle[i];
   }
-  element.showTsukkomis = false;
   element.appendChild(panel);
+
+  element.showTsukkomis = false;
+  setTsukkomiPageFor(element, initialTsukkomiUrlFor(element.id));
 }
 
 const httpGetAsync = function(theUrl, callback)

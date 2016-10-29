@@ -4,11 +4,11 @@
   ],
   "comments": [
     { "id": 1, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
-    { "id": 2, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
-    { "id": 3, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
-    { "id": 4, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
-    { "id": 5, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
-    { "id": 6, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
+    { "id": 2, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 80, "yPosition": 120 },
+    { "id": 3, "tsukkomi_id": "opm", "body": "woah the hail", "postId": 1, "xPosition": 50, "yPosition": 50 },
+    { "id": 4, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 60, "yPosition": 60 },
+    { "id": 5, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 200, "yPosition": 100 },
+    { "id": 6, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 210, "yPosition": 80 },
     { "id": 7, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
     { "id": 8, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
     { "id": 9, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
@@ -18,7 +18,12 @@
     { "id": 13, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
     { "id": 14, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
     { "id": 15, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
-    { "id": 16, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 }
+    { "id": 16, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
+    { "id": 17, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
+    { "id": 18, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
+    { "id": 19, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
+    { "id": 20, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 },
+    { "id": 21, "tsukkomi_id": "opm", "body": "woah so funny", "postId": 1, "xPosition": 50, "yPosition": 100 }
   ],
   "profile": { "name": "typicode" }
 }
