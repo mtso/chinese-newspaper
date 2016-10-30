@@ -6,11 +6,7 @@
  * > INITIALIZE TSUKKOMI-ENABLED IMAGES
  */
 window.onload = function() {
-
-  // if (window.location.protocol == 'http:') {
-  //   window.location = window.location.href.replace(/^http:/, 'https:');
-  // }
-
+  
   insertStyle();
 
   const tsukkomiEnabled = document.getElementsByClassName('tsukkomi-enabled');
@@ -494,7 +490,7 @@ const parseLinkHeader = function(link) {
         var paramsplit = p.split('=');
         var name = paramsplit[0];
         var rel = paramsplit[1].replace(/["']/g, '');
-        rels[rel] = href; //.replace(/^http:/, 'https:');
+        rels[rel] = href;
     }
   }
   return rels;
