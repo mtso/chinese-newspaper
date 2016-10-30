@@ -6,6 +6,11 @@
  * > INITIALIZE TSUKKOMI-ENABLED IMAGES
  */
 window.onload = function() {
+
+  if (window.location.protocol == 'http:') {
+    window.location = window.location.href.replace(/^http:/, 'https:');
+  }
+
   insertStyle();
 
   const tsukkomiEnabled = document.getElementsByClassName('tsukkomi-enabled');
