@@ -7,9 +7,9 @@
  */
 window.onload = function() {
 
-  if (window.location.protocol == 'http:') {
-    window.location = window.location.href.replace(/^http:/, 'https:');
-  }
+  // if (window.location.protocol == 'http:') {
+  //   window.location = window.location.href.replace(/^http:/, 'https:');
+  // }
 
   insertStyle();
 
@@ -493,7 +493,7 @@ const parseLinkHeader = function(link) {
         var paramsplit = p.split('=');
         var name = paramsplit[0];
         var rel = paramsplit[1].replace(/["']/g, '');
-        rels[rel] = href;
+        rels[rel] = href.replace(/^http:/, 'https:');
     }
   }
   return rels;
