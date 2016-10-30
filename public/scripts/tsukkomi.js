@@ -459,12 +459,13 @@ const removeCurrentTsukkomis = function(id) {
 // http://stackoverflow.com/questions/247483/http-get-request-in-javascript
 const httpGetAsync = function(theUrl, callback)
 {
+  var secureUrl = theUrl.replace(/^http:/, 'https:');
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function() { 
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
       callback(xmlHttp);
   }
-  xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+  xmlHttp.open("GET", secureUrl, true); // true for asynchronous 
   xmlHttp.send(null);
 }
 
@@ -493,7 +494,7 @@ const parseLinkHeader = function(link) {
         var paramsplit = p.split('=');
         var name = paramsplit[0];
         var rel = paramsplit[1].replace(/["']/g, '');
-        rels[rel] = href.replace(/^http:/, 'https:');
+        rels[rel] = href; //.replace(/^http:/, 'https:');
     }
   }
   return rels;
